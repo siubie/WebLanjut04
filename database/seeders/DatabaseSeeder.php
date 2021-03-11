@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Post;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PostSeeder::class,
         ]);
+        Post::factory(100)->create();
     }
 }
