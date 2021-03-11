@@ -10,4 +10,20 @@ class Post extends Model
     use HasFactory;
     protected $table = "berita";
     protected $fillable = ['judul', 'slug', 'image', 'textBerita'];
+
+
+    public function index()
+    {
+        return Post::where('draft', false)
+            ->orderBy('id', 'desc')
+            ->paginate(5);
+    }
+
+    public function getBySlug($slug)
+    {
+        return Post::where([
+            'slug' => $slug,
+            'draft' => false,
+        ])->first();
+    }
 }
