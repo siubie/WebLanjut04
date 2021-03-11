@@ -21,8 +21,14 @@ class PostFactory extends Factory
      */
     public function definition()
     {
+        $title = $this->faker->sentence;
+        $slug = str_slug('fooBar');
         return [
-            //
+            'title' => $title,
+            'slug' => $slug,
+            'image' => $this->faker->imageUrl(640, 480, 'animals', true),
+            'content' => $this->faker->realText(),
+            'draft' => random_int(0, 1),
         ];
     }
 }
